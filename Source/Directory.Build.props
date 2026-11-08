@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SourceRoot>$(MSBuildThisFileDirectory)</SourceRoot>
+    <TaskStatisticsEnabled Condition="'$(TaskStatisticsEnabled)'==''">1</TaskStatisticsEnabled>
+    <AreaRunCounterEnabled Condition="'$(AreaRunCounterEnabled)'==''">0</AreaRunCounterEnabled>
+    <OutDir>$(SourceRoot)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SourceRoot)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SourceRoot)Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NOMINMAX;AREAUPDATE_TASK_STATISTICS=$(TaskStatisticsEnabled);AREAUPDATE_RUN_COUNTER=$(AreaRunCounterEnabled);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <Optimization Condition="'$(Configuration)'=='Release'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)'=='Debug'">Disabled</Optimization>
+    </ClCompile>
+    <Link Condition="'$(Configuration)'=='Release'">
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Link Condition="'$(Configuration)'=='Debug'">
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>

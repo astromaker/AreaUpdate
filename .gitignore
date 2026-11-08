@@ -250,3 +250,7 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# Python analysis caches
+__pycache__/
+*.py[cod]

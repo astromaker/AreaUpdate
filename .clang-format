@@ -1,0 +1,34 @@
+BasedOnStyle: Microsoft
+IndentWidth: 4
+ContinuationIndentWidth: 4
+UseTab: Never
+ColumnLimit: 120
+AccessModifierOffset: -4
+PointerAlignment: Left
+ReferenceAlignment: Left
+DerivePointerAlignment: false
+NamespaceIndentation: All
+SortIncludes: Never
+LineEnding: CRLF
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true
+  AfterStruct: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterControlStatement: Always
+  BeforeElse: true
+  BeforeCatch: true
+  BeforeLambdaBody: true
+RemoveBracesLLVM: false
+InsertBraces: false
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: None
+AllowShortLambdasOnASingleLine: Empty
+BreakBeforeBinaryOperators: NonAssignment
+BreakConstructorInitializers: BeforeComma
+PackConstructorInitializers: Never
+ConstructorInitializerIndentWidth: 4

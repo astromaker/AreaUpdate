@@ -1,0 +1,14 @@
+{
+  "files.eol": "\r\n",
+  "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.clang_format_path": "clang-format",
+  "C_Cpp.clang_format_style": "file",
+  "C_Cpp.clang_format_fallbackStyle": "none",
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "files.encoding": "utf8bom"
+  }
+}
