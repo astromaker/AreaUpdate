@@ -122,7 +122,7 @@ MSBuild Source/AreaUpdate.sln /m /p:Configuration=Release /p:Platform=x64 /p:Tas
 # 기본 진단 빌드 복원
 MSBuild Source/AreaUpdate.sln /m /p:Configuration=Release /p:Platform=x64 /p:TaskStatisticsEnabled=1
 # 보존한 다섯 실행 파일로 비교. 새로운 결과 폴더를 지정한다.
-.\Run-ObjectOverheadComparison.ps1 -BinaryDirectory artifacts/object-overhead -OutputDirectory artifacts/object-overhead-repeat
+.\tools\experiments\Run-ObjectOverheadComparison.ps1 -BinaryDirectory artifacts/object-overhead -OutputDirectory artifacts/object-overhead-repeat
 ```
 
 실행 파일·핵심 소스·SHA-256·환경·실행별 로그·CPU 표본·요약을

@@ -35,7 +35,7 @@ RadiusTimerBatchTask가 이 경로를 사용한다. 서로 다른 절대 만료 
 
 MSBuild Release x64, Task 통계 OFF, 잠금 계측 OFF, Worker 8개, signal 대기, Actor 추가 연산 0, 고정 50ms 예약, 1초 동안 1ms 간격 입장이다. seed 42/43에서 실행 순서를 반전한다. 각 모드가 같은 실행 파일과 공통 payload를 사용한다. 실게임 로직은 제공되지 않아 합성 부하로만 비교한다.
 
-Run-RadiusPublication.ps1은 area(새 Area), single(예전 기본 설정), timer(예약만 묶음), publish(예약+게시 묶음)를 분리한다. scout는 각 15초, 후속 final/boundary는 각 20초, profile은 별도 10초다. 원자료와 고정 실행 파일/PDB는 artifacts/radius-publication 아래에 보관한다.
+tools/experiments/Run-RadiusPublication.ps1은 area(새 Area), single(예전 기본 설정), timer(예약만 묶음), publish(예약+게시 묶음)를 분리한다. scout는 각 15초, 후속 final/boundary는 각 20초, profile은 별도 10초다. 원자료와 고정 실행 파일/PDB는 artifacts/radius-publication 아래에 보관한다.
 
 ### 28만 사전 비교
 
@@ -90,7 +90,7 @@ legacy에서는 타이머 묶음과 게시 묶음을 기본 ON으로 채택한�
 - AREAUPDATE_RADIUS_TIMER_BATCH=1, AREAUPDATE_RADIUS_PUBLISH_BATCH=0: 타이머 묶음만 비교.
 - 두 변수 모두 1 또는 미설정: 새 기본 설정.
 
-예전 Run-RadiusFollowup.ps1에는 publication OFF를 명시해 종전의 타이머 단독 비교 의미를 보존했다. Test-RadiusFollowup.ps1은 게시 ON/OFF × 타이머 ON/OFF × batch 1/4/16/64 조합을 검사하도록 확장했다.
+예전 tools/experiments/Run-RadiusFollowup.ps1에는 publication OFF를 명시해 종전의 타이머 단독 비교 의미를 보존했다. tools/validation/Test-RadiusFollowup.ps1은 게시 ON/OFF × 타이머 ON/OFF × batch 1/4/16/64 조합을 검사하도록 확장했다.
 
 ## 경계 밀집
 
@@ -112,9 +112,9 @@ legacy에서는 타이머 묶음과 게시 묶음을 기본 ON으로 채택한�
 - 통계 ON, 5천 Actor: 게시 0/1 × 타이머 묶음 0/1 × batch 1/4/16/64, 이동·이벤트·등록/탈퇴 16회 통과.
 - 경계 verify/synthetic × area/legacy × seed 42/43, 8회 통과. overlaps=0, sent=applied, tasks_live=0이었다. verify는 ownership_cycle=1이며 synthetic에서는 등록/탈퇴 검사를 하지 않는다.
 - 경계 이벤트 ID 손상 주입이 검증기에 의해 거부되는 것도 확인했다.
-- Format-Code.ps1 -All -Check, Check-CodeStyle.ps1, git diff --check 통과. C++의 BOM/CRLF를 유지했다.
+- tools/quality/Format-Code.ps1 -All -Check, tools/quality/Check-CodeStyle.ps1, git diff --check 통과. C++의 BOM/CRLF를 유지했다.
 - reference SHA256과 대조해 새 Area 및 원본 Baseline 파일이 변경되지 않았음을 확인했다.
 
 통계 OFF 실험은 scout 8회, profile 2회, final 18회, boundary 6회다. profile은 계측 오버헤드가 있는 별도 진단으로 성능 평균에 섞지 않았다. 측정 실행 파일의 기본값과 무관하게 각 옵션을 명시했으며, 기본값 변경은 최종 빌드에 반영했다. 실게임/장시간 운영 안정성 전체를 보장하는 결과는 아니다.
 
-재현 스크립트는 Run-RadiusPublication.ps1과 Test-RadiusFollowup.ps1이다. artifacts/radius-publication/validation에 검증 로그를 보관한다.
+재현 스크립트는 tools/experiments/Run-RadiusPublication.ps1과 tools/validation/Test-RadiusFollowup.ps1이다. artifacts/radius-publication/validation에 검증 로그를 보관한다.

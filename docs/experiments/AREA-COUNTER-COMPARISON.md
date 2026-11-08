@@ -44,4 +44,4 @@ MSBuild에서 `/p:AreaRunCounterEnabled=1`을 주면 기존 카운터를 사용�
 
 ## 재현
 
-`Run-AreaCounterComparison.ps1`은 `bin/counter-on.exe`, `bin/counter-off.exe` 두 실행 파일을 읽는다. 이미 완료한 summary.json은 보존해 집계만 재개한다. 새 실험은 새 출력 폴더와 해당 빌드의 실행 파일을 사용해야 한다.
+`tools/experiments/Run-AreaCounterComparison.ps1`은 `bin/counter-on.exe`, `bin/counter-off.exe` 두 실행 파일을 읽는다. 이미 완료한 summary.json은 보존해 집계만 재개한다. 새 실험은 새 출력 폴더와 해당 빌드의 실행 파일을 사용해야 한다.

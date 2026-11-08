@@ -92,7 +92,7 @@ ETL 데이터가 없으므로 함수별 CPU 비중/할당 스택/누수 원인�
 - AreaHeapProbe.exe heap tracing disabled
 - 이 작업에서 시작한 AreaCpuProbe/AreaHeapProbe 프로세스 없음
 
-Collect-AreaProfiles.ps1은 별도 복사 실행 파일과 고유 WPR 인스턴스를 사용한다.
+tools/profiling/Collect-AreaProfiles.ps1은 별도 복사 실행 파일과 고유 WPR 인스턴스를 사용한다.
 기존 힙 설정이 enabled라면 덮어쓰지 않고, 새 설정은 finally에서 해제하도록 했다.
 실패 시에도 다른 사용자의 기록을 전역 취소하지 않는다.
 CPU는 28만 Actor의 준비 후 10초, 힙은 5,000 Actor의 시작 3초를 수집하도록 제한했다.
@@ -101,8 +101,8 @@ CPU는 28만 Actor의 준비 후 10초, 힙은 5,000 Actor의 시작 3초를 수
 
 관리자 권한/허용된 시스템 정책을 가진 PowerShell에서 새 폴더로 재시도한다.
 ```powershell
-.\Collect-AreaProfiles.ps1 -OutputDirectory artifacts/motion-profiles-admin
-.\Export-AreaProfiles.ps1 -InputDirectory artifacts/motion-profiles-admin
+.\tools\profiling\Collect-AreaProfiles.ps1 -OutputDirectory artifacts/motion-profiles-admin
+.\tools\profiling\Export-AreaProfiles.ps1 -InputDirectory artifacts/motion-profiles-admin
 ```
 내보내기 스크립트는 로컬 PDB만 사용하며 CPU 스택과 해당 PID의 힙 할당 스택/손실 통계를 출력한다.
 당시에는 ETL 수집 실패로 내보내기 경로가 미검증이었다. 이후 관리자 수집이 성공했으며 실제 CPU·힙 분석 결과는 [후속 보고서](AREA-ETW-PROFILE-RESULTS.md)에 정리했다.
@@ -110,8 +110,8 @@ CPU는 28만 Actor의 준비 후 10초, 힙은 5,000 Actor의 시작 3초를 수
 ## 재현
 
 ```powershell
-.\Run-MotionChecks.ps1 -Stage verify -OutputDirectory artifacts/motion-repeat
-.\Run-MotionChecks.ps1 -Stage synthetic -OutputDirectory artifacts/motion-repeat
+.\tools\validation\Run-MotionChecks.ps1 -Stage verify -OutputDirectory artifacts/motion-repeat
+.\tools\validation\Run-MotionChecks.ps1 -Stage synthetic -OutputDirectory artifacts/motion-repeat
 ```
 
 프로덕션 파티션 정책/반경/Actor 소유권/Job round-robin과 오브젝트 풀은 변경하지 않았다.

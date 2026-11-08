@@ -84,8 +84,8 @@ Task 수명·미갱신·중복 갱신을 검증하고 CPU 표본의 메모리 �
 ## 재현
 
 ```powershell
-.\Run-AreaTuning.ps1 -OutputDirectory artifacts/area-validation-repeat/tuning
-.\Run-AreaFollowup.ps1 -AdmissionMax 16 -AdmissionWaitMs 10 -StressSeconds 180 -OutputDirectory artifacts/area-validation-repeat/followup
+.\tools\experiments\Run-AreaTuning.ps1 -OutputDirectory artifacts/area-validation-repeat/tuning
+.\tools\experiments\Run-AreaFollowup.ps1 -AdmissionMax 16 -AdmissionWaitMs 10 -StressSeconds 180 -OutputDirectory artifacts/area-validation-repeat/followup
 ```
 
 원자료는 artifacts/area-validation/tuning 및 followup에 보존한다.
@@ -195,7 +195,7 @@ Task 누수 검증 통과만으로 모든 메모리 누수가 없다고 결론�
 설정 변경, 선택형 구간 계측, 집중 배치와 실제 상호작용 검증 모드를 추가했다.
 Release/Debug 솔루션 빌드와 AreaTests/UpdateComparison 회귀 검사를 통과했다.
 상호작용 수신 상태/체크섬과 동시 접근 검증은 별도 프로브에서도 통과했다.
-추가 이동 없음 90초와 5,000 Actor 프로브는 Run-AreaFollowup.ps1 끝에 포함해 재현할 수 있다.
+추가 이동 없음 90초와 5,000 Actor 프로브는 tools/experiments/Run-AreaFollowup.ps1 끝에 포함해 재현할 수 있다.
 
 네 단계의 계획된 검증은 수행했지만 수시간 soak, 실제 게임 처리/네트워크,
 상호작용과 Actor 이동의 동시 시나리오, 힙/커널 호출 스택 프로파일은 미확인이다.

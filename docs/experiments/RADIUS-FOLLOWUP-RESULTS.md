@@ -65,7 +65,7 @@ batch를 줄이는 변경은 채택하지 않는다. 작은 batch는 큐 추출�
 
 ## 실행 방법
 
-Run-RadiusFollowup.ps1의 profile, timers, batch, final, boundary 단계를 사용한다. 환경 변수 AREAUPDATE_RADIUS_BATCH는 1~64, AREAUPDATE_RADIUS_TIMER_BATCH는 0/1이며 RuntimeBackend 구성 전에만 읽는다. 통계 ON 실행을 성능 결과로 섞지 않도록 스크립트에서 거부한다. artifacts/radius-followup/profile은 이전 통계 ON 실행이 거부된 자료이며 비교에서 제외한다. 유효한 원자료는 artifacts/radius-followup-v2 아래에 있다.
+tools/experiments/Run-RadiusFollowup.ps1의 profile, timers, batch, final, boundary 단계를 사용한다. 환경 변수 AREAUPDATE_RADIUS_BATCH는 1~64, AREAUPDATE_RADIUS_TIMER_BATCH는 0/1이며 RuntimeBackend 구성 전에만 읽는다. 통계 ON 실행을 성능 결과로 섞지 않도록 스크립트에서 거부한다. artifacts/radius-followup/profile은 이전 통계 ON 실행이 거부된 자료이며 비교에서 제외한다. 유효한 원자료는 artifacts/radius-followup-v2 아래에 있다.
 
 boundary는 중앙 인접 2×2 Area 안에 Actor를 배치하고 이동도 이 범위로 제한한다. 네 Area의 radius footprint가 서로 겹치므로 두 모델 모두 동시 실행 제한을 받는 경우다. 이동·이벤트 probe에서도 같은 배치를 사용하되 correctness 검증과 합성 전투 부하를 구분한다. 실제 게임 로직 성능은 확인 불가다.
 
@@ -117,7 +117,7 @@ boundary는 중앙 인접 2×2 Area 안에 Actor를 배치하고 이동도 이 �
 - 통계 ON, 5천 Actor: 개별/묶음 예약 × batch 1/4/16/64의 이동·이벤트·등록/탈퇴 검증 8회 통과.
 - 경계 밀집의 새 Area/예전 방식 × seed 42/43 × verify/synthetic 8회 통과. 모든 실행에서 overlaps=0, sent=applied, tasks_live=0이었다. verify에서는 ownership_cycle=1이고, synthetic은 해당 등록/탈퇴 검사를 수행하지 않으므로 0이다.
 - 경계 이벤트 ID를 의도적으로 손상시킨 예전 방식 실행이 검증기에 의해 거부되는 것도 확인했다.
-- Format-Code.ps1 -All -Check, Check-CodeStyle.ps1, git diff --check 통과. C++의 기존 BOM과 CRLF를 보존했다.
+- tools/quality/Format-Code.ps1 -All -Check, tools/quality/Check-CodeStyle.ps1, git diff --check 통과. C++의 기존 BOM과 CRLF를 보존했다.
 - reference SHA256 목록과 대조해 새 Area 구현 및 원본 Baseline 파일이 그대로임을 확인했다.
 
-Test-RadiusFollowup.ps1로 통계 ON 검증을 재현할 수 있다. artifacts/radius-followup-v2/validation에 로그, final-source에 최종 소스 복사본과 해시를 보관했다. 예약 묶음은 정확한 만료 시각과 정상 종료 경로를 검증했으며, Worker callback 예외를 복구하는 실행 모델은 추가하지 않았다.
+tools/validation/Test-RadiusFollowup.ps1로 통계 ON 검증을 재현할 수 있다. artifacts/radius-followup-v2/validation에 로그, final-source에 최종 소스 복사본과 해시를 보관했다. 예약 묶음은 정확한 만료 시각과 정상 종료 경로를 검증했으며, Worker callback 예외를 복구하는 실행 모델은 추가하지 않았다.

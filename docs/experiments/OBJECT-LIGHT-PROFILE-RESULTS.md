@@ -142,4 +142,4 @@ Windows 타이머 해상도 변화, 특정 mutex, CPU 캐시 경쟁 중 무엇�
 - `unprofiled-control/results.csv`: WPR·선택 표본 OFF 대조 4회.
 - `actor-sample-control/results.csv`: Actor 표본만 ON인 대조 4회.
 - 모든 실행 폴더에 runtime.log·summary.json·CPU 표본 보존.
-- `Run-ObjectNextComparison.ps1 -ObjectSampleStride 256`로 같은 유형의 표본 대조를 재현할 수 있다.
+- `tools/experiments/Run-ObjectNextComparison.ps1 -ObjectSampleStride 256`로 같은 유형의 표본 대조를 재현할 수 있다.

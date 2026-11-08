@@ -71,7 +71,7 @@ CPU는 입장 완료 후 안정 구간, 전체 Actor FPS는 입장 이후 시간
 성능 측정 중 빌드/분석을 병행하지 않는다.
 
 ```powershell
-.\Run-AdaptiveComparison.ps1 -OutputDirectory artifacts/area-adaptive-repeat
+.\tools\experiments\Run-AdaptiveComparison.ps1 -OutputDirectory artifacts/area-adaptive-repeat
 # 마지막 인수로 기존 정책 선택
 .\Source\x64\Release\AreaUpdateExample.exe 20 280000 8000 42 5000 1 0 640 area 0 signal 0 0 0 fixed
 ```
@@ -110,8 +110,8 @@ CPU는 입장 완료 후 안정 구간, 전체 Actor FPS는 입장 이후 시간
 ## 재현과 한계
 
 예제의 새 마지막 인수는 fixed/adaptive이며 생략 시 adaptive다.
-Measure-RuntimeCpu.ps1도 같은 기본값이며 -AreaAdmissionMode fixed로 이전 정책을 선택한다.
-과거 계측용 Run-AreaProfile.ps1은 재현 조건을 유지하기 위해 fixed가 기본값이다.
+tools/benchmark/Measure-RuntimeCpu.ps1도 같은 기본값이며 -AreaAdmissionMode fixed로 이전 정책을 선택한다.
+과거 계측용 tools/profiling/Run-AreaProfile.ps1은 재현 조건을 유지하기 위해 fixed가 기본값이다.
 새 정책을 상세 계측하려면 -AreaAdmissionMode adaptive를 명시한다.
 이전 고정 예산 보고서는 당시 조건의 결과로 보존하며 새 정책 결과로 재해석하지 않는다.
 

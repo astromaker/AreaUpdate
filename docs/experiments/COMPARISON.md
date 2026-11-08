@@ -60,7 +60,7 @@ MSBuild로 솔루션을 Release x64 빌드한 뒤 저장소 루트에서 실행�
 ```powershell
 .\Source\x64\Release\UpdateComparison.exe --test
 .\Source\x64\Release\UpdateComparison.exe all 2000 30 8 1000 8 42 clustered 0
-.\Run-Comparison.ps1
+.\tools\benchmark\Run-Comparison.ps1
 ```
 
 위치 인수:
@@ -80,7 +80,7 @@ mode actors ticks interactions workIterations workers seed layout periodMs [warm
 - updates_per_sec는 원본 Actor 갱신 수다. events는 수신 메시지 또는 직접 피해 호출을 따로 센다.
 
 자체 테스트는 동시 생산자·모든 배치·고립 Actor·모드 간 일치·접근 중복 검출을 확인한다.
-당시 Run-Comparison.ps1은 상호작용과 배치 조합을 세 번씩 single/job/area 고정 순서로 실행하고
+당시 tools/benchmark/Run-Comparison.ps1은 상호작용과 배치 조합을 세 번씩 single/job/area 고정 순서로 실행하고
 artifacts/comparison/summary.csv에 저장했다. 이 스크립트에는 예열·무작위 순서가 없었다.
 확장성을 판단하려면 긴 실행·여러 연산 크기·1/2/4/8 Worker 조건이 필요하다.
 hotspot 하나는 의도적으로 Area 간 병렬성을 없앤다.
@@ -97,4 +97,4 @@ hotspot 하나는 의도적으로 Area 간 병렬성을 없앤다.
 
 짧은 실행은 시험 도구 검증이다. 충분히 예열한 장시간 확장성 결과나 원래 PW 런타임 성능은 아니다.
 후속 시나리오와 규칙은 [시험 시나리오](../testing.md)를 참고한다.
-Run-ScenarioComparison.ps1은 별도 프로세스·예열·실행 순서 교대·중앙값 집계를 사용한다.
+tools/benchmark/Run-ScenarioComparison.ps1은 별도 프로세스·예열·실행 순서 교대·중앙값 집계를 사용한다.

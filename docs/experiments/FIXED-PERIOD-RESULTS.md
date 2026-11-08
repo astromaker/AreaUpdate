@@ -78,7 +78,7 @@ OS 부하·예약 밀도·큐 대기 등의 개별 원인은 이번 실험에서
 artifacts/fixed-period/before와 after에 실행 파일을 보존했다.
 각 버전의 run-1~3 폴더에 runtime.log, samples.csv, summary.json이 있고
 전체 결과는 results.csv, 해시는 binaries.json에 있다.
-Run-FixedPeriodComparison.ps1은 보존한 이전 실행 파일과 새 실행 파일을 교차 측정한다.
+tools/experiments/Run-FixedPeriodComparison.ps1은 보존한 이전 실행 파일과 새 실행 파일을 교차 측정한다.
 기존 자료를 덮어쓰지 않도록 보호한다.
 
 ```powershell

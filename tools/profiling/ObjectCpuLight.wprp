@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WindowsPerformanceRecorder Version="1.0" Author="AreaUpdate">
+  <Profiles>
+    <SystemCollector Id="ObjectLightSystem" Name="Object CPU Light">
+      <BufferSize Value="1024" />
+      <Buffers Value="128" />
+    </SystemCollector>
+    <SystemProvider Id="ObjectLightProvider">
+      <Keywords>
+        <Keyword Value="CpuConfig" />
+        <Keyword Value="ProcessThread" />
+        <Keyword Value="Loader" />
+        <Keyword Value="CSwitch" />
+        <Keyword Value="ReadyThread" />
+        <Keyword Value="SampledProfile" />
+        <Keyword Value="ThreadPriority" />
+      </Keywords>
+      <Stacks>
+        <Stack Value="SampledProfile" />
+      </Stacks>
+    </SystemProvider>
+    <Profile Id="ObjectCpuLight.Verbose.File" Name="ObjectCpuLight" Description="Object CPU sampling and scheduling without switch stacks"
+             LoggingMode="File" DetailLevel="Verbose">
+      <Collectors>
+        <SystemCollectorId Value="ObjectLightSystem">
+          <SystemProviderId Value="ObjectLightProvider" />
+        </SystemCollectorId>
+      </Collectors>
+    </Profile>
+  </Profiles>
+</WindowsPerformanceRecorder>

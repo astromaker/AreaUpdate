@@ -43,9 +43,9 @@
 기존 S01~S13은 `../testing.md`와 같다. S14는 640×640 맵, Actor 20,000개 균등 분포, 상호작용 8, 연산 1,000회, Worker 8개다. S15는 같은 조건에서 연산 20,000회다. 공간 계산은 `../spatial-scheduling.md`에 설명한다.
 
 ```powershell
-.\Run-ScenarioComparison.ps1 -WithOriginal
+.\tools\benchmark\Run-ScenarioComparison.ps1 -WithOriginal
 # 일부 시나리오만 선택
-.\Run-ScenarioComparison.ps1 -WithOriginal -Only 'S04,S05,S06,S10,S11,S14,S15'
+.\tools\benchmark\Run-ScenarioComparison.ps1 -WithOriginal -Only 'S04,S05,S06,S10,S11,S14,S15'
 ```
 
 측정은 각 조건 100 tick, 별도 World 준비 실행 5 tick, 방식별 3회다. 세 방식의 실행 순서를 회전한다. checksum, Actor별 수신 damage와 업데이트 횟수, 동시 접근 검증을 유지한다. 결과는 `artifacts/scenarios-three-way`에 저장한다. 원본과 수정본은 초기화/메모리 자료구조가 다르므로 CPU·경과시간과 메모리 사용량을 구분해서 해석해야 한다.

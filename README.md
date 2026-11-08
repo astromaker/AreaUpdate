@@ -52,6 +52,7 @@ CMake 설정도 남아 있지만 이 저장소의 기본 빌드 검증은 솔루
 - [비교 시험 시나리오](docs/testing.md)
 - [Object 프로파일링 절차](docs/profiling.md)
 - [과거 실험 보고서와 재현 도구](docs/experiments/README.md)
+- [개발·측정 도구 안내](tools/README.md)
 - [코딩 규칙](CODING_STYLE.md), [저장소 작업 지침](AGENTS.md)
 
 ## 보관 원칙

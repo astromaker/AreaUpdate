@@ -35,7 +35,7 @@ Object와는 총 스레드 수와 동기화 계약이 다르므로 동일 자원
 
 ## 재측정
 
-솔루션을 Release x64로 빌드하고 Run-CurrentModelComparison.ps1과 Measure-RuntimeCpu.ps1의
+솔루션을 Release x64로 빌드하고 tools/benchmark/Run-CurrentModelComparison.ps1과 tools/benchmark/Measure-RuntimeCpu.ps1의
 매개변수와 메모리 상한을 확인한 뒤 실행한다. 현재 코드와 보관 바이너리의 측정은 구분한다.
 해시·설정·환경·입력·원본 로그를 남기고 측정 중 빌드나 무거운 정적 검사를 병행하지 않는다.
 과거 전용 바이너리를 요구하는 도구도 있으므로 [실험 목록](experiments/README.md)을 먼저 확인한다.

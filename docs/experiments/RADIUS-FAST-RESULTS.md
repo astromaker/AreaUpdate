@@ -32,9 +32,9 @@ Source/Core/Worker.cpp의 Worker::run은 run_timer와 run_task 이후 항상 on_
 
 ## 측정
 
-Run-RadiusFast.ps1은 area(새 Area), base(앞선 묶음 게시), fast(동일 bucket), merged(fast+알림 통합), notify(알림 통합만)를 비교한다. Task 통계와 잠금 계측은 성능 실행에서 끄고, profile 단계만 별도로 계측한다. Worker 8개, signal, Actor 추가 연산 0, 절대 50ms 예약, 1초 동안 1ms 간격 입장이다. seed 42/43에서 실행 순서를 반전한다. 실제 게임 로직 성능은 확인 불가다.
+tools/experiments/Run-RadiusFast.ps1은 area(새 Area), base(앞선 묶음 게시), fast(동일 bucket), merged(fast+알림 통합), notify(알림 통합만)를 비교한다. Task 통계와 잠금 계측은 성능 실행에서 끄고, profile 단계만 별도로 계측한다. Worker 8개, signal, Actor 추가 연산 0, 절대 50ms 예약, 1초 동안 1ms 간격 입장이다. seed 42/43에서 실행 순서를 반전한다. 실제 게임 로직 성능은 확인 불가다.
 
-후속 final/boundary의 후보는 사전 비교 후 선택한다. 과거 Run-RadiusPublication.ps1과 Run-RadiusFollowup.ps1은 새 두 옵션을 0으로 고정해 당시 비교 의미를 보존한다. 원자료와 고정 실행 파일/PDB는 artifacts/radius-fast 아래에 보관한다.
+후속 final/boundary의 후보는 사전 비교 후 선택한다. 과거 tools/experiments/Run-RadiusPublication.ps1과 tools/experiments/Run-RadiusFollowup.ps1은 새 두 옵션을 0으로 고정해 당시 비교 의미를 보존한다. 원자료와 고정 실행 파일/PDB는 artifacts/radius-fast 아래에 보관한다.
 
 ## 사전 결과
 
@@ -111,7 +111,7 @@ legacy의 동일 bucket 경로와 알림 통합을 기본 ON으로 선택했다.
 - 통계 ON, 5천 Actor: fast/merge 4개 조합, 게시/타이머 묶음/batch 16개 조합의 이동·이벤트·등록/탈퇴 검사 20회 통과.
 - 경계 verify/synthetic × area/legacy × seed 42/43 검사 8회 통과. overlaps=0, sent=applied, tasks_live=0이었다. verify는 ownership_cycle=1이며 synthetic에서는 등록/탈퇴를 검사하지 않는다.
 - 의도적인 경계 이벤트 ID 손상을 검증기가 거부하는 것도 확인했다.
-- Format-Code.ps1 -All -Check, Check-CodeStyle.ps1, git diff --check 통과. C++의 기존 BOM과 CRLF를 유지했다.
+- tools/quality/Format-Code.ps1 -All -Check, tools/quality/Check-CodeStyle.ps1, git diff --check 통과. C++의 기존 BOM과 CRLF를 유지했다.
 - reference SHA256과 대조해 새 Area, 공통 Core, 원본 Baseline 파일이 변경되지 않았음을 확인했다.
 
 통계 OFF 비교는 scout 8회, isolate 4회, profile 4회, final 18회, boundary 6회다. profile은 별도 진단이며 성능 평균에 섞지 않았다. 최종 비교의 미갱신 Actor는 모두 0이었다. 성능 바이너리에서는 옵션을 명시했고 기본값 변경은 최종 빌드에 반영했다. 실게임/장시간 운영 안정성 전체를 보장하는 검증은 아니다.

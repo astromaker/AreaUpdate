@@ -85,10 +85,10 @@ Actor당 연산량·맵 크기·실제 입장 완료 시각·활성 Area 분포�
 ```powershell
 # Actor 수를 늘리되 같은 밀도·이동 비율 유지
 .\Source\x64\Release\AreaUpdateExample.exe 20 140000 4000 42 5000 1 0 453
-.\Measure-RuntimeCpu.ps1 -Seconds 20 -Actors 140000 -MovesPerSecond 4000 -ActorWork 0 -MapSide 453 -OutputDirectory artifacts/new-actor-scale
+.\tools\benchmark\Measure-RuntimeCpu.ps1 -Seconds 20 -Actors 140000 -MovesPerSecond 4000 -ActorWork 0 -MapSide 453 -OutputDirectory artifacts/new-actor-scale
 ```
 
-Run-ActorScale.ps1이 단계별 시험과 메모리 안전 확인을 수행한다.
+tools/benchmark/Run-ActorScale.ps1이 단계별 시험과 메모리 안전 확인을 수행한다.
 기존 artifacts/actor-scale 실행 파일·결과는 덮어쓰지 않도록 보호했다.
 해당 폴더에 results.csv, plan.csv, environment.json, binary.json,
 각 단계 runtime.log/summary.json/samples.csv와 측정 실행 파일을 보존했다.

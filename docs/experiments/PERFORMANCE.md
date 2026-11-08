@@ -14,7 +14,7 @@ Visual Studio MSBuild로 Release x64 솔루션을 빌드한다.
 ```powershell
 & 'C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\MSBuild.exe' Source\AreaUpdate.sln /m /p:Configuration=Release /p:Platform=x64
 .\Source\x64\Release\AreaTests.exe
-.\Run-Measurements.ps1
+.\tools\experiments\Run-Measurements.ps1
 ```
 
 당시 예제의 위치 인수:
@@ -23,7 +23,7 @@ Visual Studio MSBuild로 Release x64 솔루션을 빌드한다.
 AreaUpdateExample.exe seconds actorCount movementAttemptsPerSecond seed
 ```
 
-Run-Measurements.ps1은 Actor 1,000개/이동 초당 200회, Actor 10,000개/이동 초당 2,000회를
+tools/experiments/Run-Measurements.ps1은 Actor 1,000개/이동 초당 200회, Actor 10,000개/이동 초당 2,000회를
 각 20초씩 세 번 실행하고 Actor 5,000개/이동 초당 20,000회를 600초 실행한다.
 seed 42, Worker 8개, 파티션 25개, Area 102,400개로 순차 실행했다.
 이동은 초마다 한꺼번에 시도하며 모든 시도가 성공하는 것은 아니다.

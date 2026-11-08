@@ -132,8 +132,8 @@ binary.json, 각 모드·인원별 runtime.log/summary.json/samples.csv에 있�
 # 마지막 인수: area / original / job
 .\artifacts\runtime-three-way\AreaUpdateExample-measured.exe 20 70000 2000 42 5000 1 0 320 original
 .\artifacts\runtime-three-way\AreaUpdateExample-measured.exe 20 70000 2000 42 5000 1 0 320 job
-.\Measure-RuntimeCpu.ps1 -Mode job -Actors 70000 -MapSide 320 -ExecutablePath artifacts/runtime-three-way/AreaUpdateExample-measured.exe -OutputDirectory artifacts/new-job-run
+.\tools\benchmark\Measure-RuntimeCpu.ps1 -Mode job -Actors 70000 -MapSide 320 -ExecutablePath artifacts/runtime-three-way/AreaUpdateExample-measured.exe -OutputDirectory artifacts/new-job-run
 ```
 
-Run-RuntimeComparison.ps1이 공통 메모리 안전 예산 안에서 비교한다.
+tools/benchmark/Run-RuntimeComparison.ps1이 공통 메모리 안전 예산 안에서 비교한다.
 기존 자료를 덮어쓰지 않도록 보호하며, 기존 측정 결과와 다른 실행 파일을 혼합하지 않는다.

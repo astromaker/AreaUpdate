@@ -96,7 +96,7 @@ Area가 모든 부하의 모든 지연 지표에서 우세한 것은 아니다. 
 
 ## 재현 자료
 
-- `Run-CurrentModelComparison.ps1`: 최신 Release를 보관하고 3모델을 같은 조건으로 측정.
+- `tools/benchmark/Run-CurrentModelComparison.ps1`: 최신 Release를 보관하고 3모델을 같은 조건으로 측정.
 - `artifacts/current-model-comparison/bin`: 실측 EXE/PDB.
 - `environment.json`: 실행 조건·해시, `plan.csv`: 맵·이동 수·메모리 예산.
 - `results.csv`: 전체 24회 측정값, `aggregate.csv`: 집계·실행 간 FPS 범위.
@@ -105,5 +105,5 @@ Area가 모든 부하의 모든 지연 지표에서 우세한 것은 아니다. 
 재측정할 때는 기존 결과를 덮어쓰지 않도록 새로운 출력 경로를 지정한다.
 
 ```powershell
-.\Run-CurrentModelComparison.ps1 -OutputDirectory artifacts/current-model-comparison-repeat
+.\tools\benchmark\Run-CurrentModelComparison.ps1 -OutputDirectory artifacts/current-model-comparison-repeat
 ```

@@ -8,7 +8,7 @@
 
 - Core Worker의 m_pollingWait 기본값을 false로 변경했다.
 - 예제의 waitMode 기본값을 signal로 변경했다.
-- Measure-RuntimeCpu.ps1의 WaitMode 기본값도 signal로 변경했다.
+- tools/benchmark/Measure-RuntimeCpu.ps1의 WaitMode 기본값도 signal로 변경했다.
 - set_polling_wait(true) 또는 예제의 poll 인수로 이전 방식을 명시할 수 있다.
 
 기존 신호 대기 구현을 기본 선택으로 바꾼 것이며 partition·반경·batch 64·admission 8·공평성은 변경하지 않았다.
@@ -21,7 +21,7 @@ TaskDispatcher 자체의 대기는 원래부터 WakeSignal을 사용했으며 �
 
 같은 Release 실행 파일에서 area/job 모드를 바꾸며 각 조건 20초씩 3회 실행한다.
 첫 회 Area→Object, 다음 회 Object→Area, 세 번째 회 Area→Object다.
-Run-SignalModelComparison.ps1은 WaitMode를 생략해 측정 도구의 새 기본값을 사용하고,
+tools/experiments/Run-SignalModelComparison.ps1은 WaitMode를 생략해 측정 도구의 새 기본값을 사용하고,
 실제 출력의 wait_mode=signal과 signal_waits>0을 검증한다.
 예제 자체도 waitMode를 생략한 기본 실행으로 별도 확인한다.
 
@@ -90,7 +90,7 @@ Object도 공통 Area 그리드를 할당하므로 최소 메모리 구현끼리
 # 이전 대기 방식을 명시
 .\Source\x64\Release\AreaUpdateExample.exe 20 140000 4000 42 5000 1 0 453 area 0 poll
 # 보존된 실행 파일로 새 결과 폴더에 재실행
-.\Run-SignalModelComparison.ps1 -OutputDirectory artifacts/signal-default-repeat
+.\tools\experiments\Run-SignalModelComparison.ps1 -OutputDirectory artifacts/signal-default-repeat
 ```
 
 artifacts/signal-default-comparison/after에 측정 실행 파일과 변경한 핵심 파일을 보존한다.

@@ -94,9 +94,9 @@ Actor 콜백 최대는 약 2.31ms까지 관측돼 OS 실행 중단 등의 꼬리
 
 ```powershell
 # 1단계: 보존한 기준/전용 Task 실행 파일로 비교
-.\Run-ObjectOverheadComparison.ps1 -Variants baseline,dedicated -Repetitions 3 -BinaryDirectory artifacts/object-actor-task -OutputDirectory artifacts/object-actor-task-repeat
+.\tools\experiments\Run-ObjectOverheadComparison.ps1 -Variants baseline,dedicated -Repetitions 3 -BinaryDirectory artifacts/object-actor-task -OutputDirectory artifacts/object-actor-task-repeat
 # 2단계: 보존한 계측 지원 실행 파일로 stride 0/256 대조
-.\Run-ObjectDispatchProfile.ps1 -OutputDirectory artifacts/object-dispatch-repeat
+.\tools\profiling\Run-ObjectDispatchProfile.ps1 -OutputDirectory artifacts/object-dispatch-repeat
 # 마지막 인수 256이 표본 비율. 생략/0이면 비활성
 .\Source\x64\Release\AreaUpdateExample.exe 20 140000 4000 42 5000 1 0 453 job 0 poll 256
 ```

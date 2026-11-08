@@ -101,13 +101,13 @@ MSBuild Release x64, Task 통계 OFF, Area 전역 카운터 OFF, Worker 8개, si
 
 한곳 집중 사례는 한 Area의 Actor 순회가 중심이므로 넓은 맵 병렬성 비교와 다르다. 두 방식 모두 약 20 FPS지만, 이 결과로 실제 전투 로직 처리량을 보장하지 않는다. 실제 게임 로직은 제공되지 않았다.
 
-원자료와 실행 파일은 artifacts/legacy-optimization의 comparison(1차), bitmap(최종 채택), padded(추가 후보)에 보관했다. Run-LegacyOptimization.ps1로 동일 시나리오를 다시 실행할 수 있다.
+원자료와 실행 파일은 artifacts/legacy-optimization의 comparison(1차), bitmap(최종 채택), padded(추가 후보)에 보관했다. tools/experiments/Run-LegacyOptimization.ps1로 동일 시나리오를 다시 실행할 수 있다.
 
 ## 최종 검증
 
 - Source/AreaUpdate.sln: MSBuild Release/Debug x64 빌드 성공. 최종 실행 파일은 기본 Task 통계 ON으로 복구했다.
 - Release/Debug AreaTests 통과. Release UpdateComparison --test 통과.
 - 통계 ON, Actor 5,000명, 5초 이동·이벤트 검사: legacy 균등/집중 모두 overlaps=0, sent=applied, ownership_cycle=1, tasks_live=0.
-- Format-Code.ps1 -All -Check(32파일), Check-CodeStyle.ps1, git diff --check 통과.
+- tools/quality/Format-Code.ps1 -All -Check(32파일), tools/quality/Check-CodeStyle.ps1, git diff --check 통과.
 - reference의 SHA256 목록과 대조하여 새 Area 구현 및 원본 Baseline 파일이 변경되지 않았음을 확인했다.
 - 최종 코드와 bitmap 측정 시점의 차이는 빈 줄, 예외 메시지 용어, 미사용 include 정리뿐이며 실행 알고리즘은 같다.

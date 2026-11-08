@@ -101,9 +101,9 @@ FPS 변화는 약 +0.4%로 두 번의 짧은 실행에서 의미 있는 처리�
 ## 재현 예시
 
 ```powershell
-.\Run-AreaStepComparison.ps1 -Baseline counter-off -Candidate partition-cache -OutputDirectory artifacts/new-cache
-.\Run-AreaStepComparison.ps1 -Baseline partition-cache -Candidate timer-compact -OutputDirectory artifacts/new-compact
-.\Run-AreaStepComparison.ps1 -Baseline cache-no-stats -Candidate compact-no-stats -OutputDirectory artifacts/new-no-stats -ActorCounts 280000
+.\tools\experiments\Run-AreaStepComparison.ps1 -Baseline counter-off -Candidate partition-cache -OutputDirectory artifacts/new-cache
+.\tools\experiments\Run-AreaStepComparison.ps1 -Baseline partition-cache -Candidate timer-compact -OutputDirectory artifacts/new-compact
+.\tools\experiments\Run-AreaStepComparison.ps1 -Baseline cache-no-stats -Candidate compact-no-stats -OutputDirectory artifacts/new-no-stats -ActorCounts 280000
 ```
 
 스크립트는 보관된 `artifacts/area-followup-ab/bin`의 실행 파일을 사용하고 summary의 실행 파일 해시를 확인한다. 이미 완료한 summary는 보존한다. Task 통계 OFF 빌드는 솔루션 MSBuild의 `/p:TaskStatisticsEnabled=0`을 사용했다.

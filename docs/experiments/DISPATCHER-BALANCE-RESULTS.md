@@ -151,7 +151,7 @@ Release/Debug 솔루션 빌드와 실제 Worker 집계, 4개 생산자의 직렬
 # 마지막 인수가 Dispatcher 표본 stride. 직전 0은 Actor 표본 OFF.
 .\Source\x64\Release\AreaUpdateExample.exe 20 140000 4000 42 5000 1 0 453 job 0 poll 0 256
 # 보존한 실행 파일로 새 결과 폴더에서 비교
-.\Run-DispatcherBalance.ps1 -OutputDirectory artifacts/dispatcher-balance-repeat
+.\tools\profiling\Run-DispatcherBalance.ps1 -OutputDirectory artifacts/dispatcher-balance-repeat
 ```
 
 artifacts/dispatcher-balance/isolated에 최종 실행 파일·핵심 소스를 보존한다.

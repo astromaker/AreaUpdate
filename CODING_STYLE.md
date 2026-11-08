@@ -36,26 +36,26 @@ LLVM clang-format 18 이상이 필요하며 현재 LLVM 22에서 설정을 검�
 
 ```powershell
 # 기본: Area.cpp 하나만 적용
-.\Format-Code.ps1
+.\tools\quality\Format-Code.ps1
 # 선택 파일을 수정 없이 검사
-.\Format-Code.ps1 -Check -Paths Source/AreaUpdate/Area.cpp,Source/AreaUpdate/Area.h
+.\tools\quality\Format-Code.ps1 -Check -Paths Source/AreaUpdate/Area.cpp,Source/AreaUpdate/Area.h
 # 원본/생성물을 제외한 현재 프로젝트 전체 검사 또는 적용
-.\Format-Code.ps1 -All -Check
-.\Format-Code.ps1 -All
+.\tools\quality\Format-Code.ps1 -All -Check
+.\tools\quality\Format-Code.ps1 -All
 ```
 
 중괄호 자동 제거는 껐다. `clang-tidy`의 `readability-braces-around-statements`와 `ShortStatementLines: 2`로 여러 줄 본문에 중괄호를 요구한다. 이 도구의 줄 수는 조건 끝에서 계산하므로 값 2가 다음 줄의 한 줄짜리 본문을 허용한다. 중괄호 검사는 아래처럼 수행한다. MSVC/Windows SDK를 찾을 수 있는 LLVM 환경이 필요하며 현재 LLVM 22에서 확인했다.
 
 ```powershell
-.\Check-ControlBraces.ps1       # 검사만
-.\Check-ControlBraces.ps1 -Fix  # 여러 줄 본문의 중괄호 추가
-.\Format-Code.ps1 -All         # 추가 후 서식 정리
+.\tools\quality\Check-ControlBraces.ps1       # 검사만
+.\tools\quality\Check-ControlBraces.ps1 -Fix  # 여러 줄 본문의 중괄호 추가
+.\tools\quality\Format-Code.ps1 -All         # 추가 후 서식 정리
 ```
 
 명명·지원되는 변수 초기화·중괄호 규칙은 다음 명령으로 함께 검사한다. 이 검사는 소스와 포함된 프로젝트 헤더를 분석하며 원본 스냅샷은 제외한다. 테스트 hook을 켜서 분석하고, 실제 production 구성은 솔루션 빌드로 별도 검증한다.
 
 ```powershell
-.\Check-CodeStyle.ps1
+.\tools\quality\Check-CodeStyle.ps1
 ```
 
 전체 적용을 요청받은 경우에만 `-All`을 사용한다. 논리적 빈 줄, bool/포인터 표기, 수명·잠금 경계는 리뷰로 보완한다.

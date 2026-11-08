@@ -63,7 +63,7 @@ WakeSignal은 mutex와 condition_variable로 신호를 보관·병합한다.
 Worker는 기본적으로 WakeSignal로 다음 타이머 만료까지 대기하며 새 요청·종료·Area 알림이 깨운다.
 알림을 보장하지 않는 Ticker는 1ms 제한시간으로 재확인한다. 예전 Area 어댑터도 이에 해당하며 실제 복귀 시각의 상한은 아니다.
 예제의 waitMode 선택 인수로 signal(기본) 또는 poll을 지정해 같은 실행 파일에서 대기를 비교한다.
-Worker의 기본 m_pollingWait는 false이며 Measure-RuntimeCpu.ps1의 기본값도 signal이다.
+Worker의 기본 m_pollingWait는 false이며 tools/benchmark/Measure-RuntimeCpu.ps1의 기본값도 signal이다.
 poll은 이전 sleep_for(1ms) 경로이며 TaskDispatcher의 대기 방식은 양쪽 모두 동일하다.
 과거 실험은 STD-PORT-RESULTS.md와 SLEEP-RESULTS.md에 보존했다.
 이번 깨우기 비교 결과와 적용 범위는 WAKEUP-RESULTS.md에 정리했다.
@@ -116,9 +116,9 @@ seed 다음 선택 인수는 입장 기간(ms), 그 다음은 입장 확인 간�
 sleep_for(1ms)의 실제 기상은 늦어질 수 있어, 지연되면 경과 시간에 해당하는 인원을 한 번에 따라잡는다.
 실제 입장 처리 횟수와 최대 묶음 크기는 SUMMARY의 join_steps/max_join_batch에 기록한다.
 즉 정확히 매 1ms마다 실행된다는 보장은 아니다.
-Measure-StdPort.ps1의 런타임 기본 인원도 70,000개다. 과거 10,000개 조건은
+tools/experiments/Measure-StdPort.ps1의 런타임 기본 인원도 70,000개다. 과거 10,000개 조건은
 -RuntimeActors 10000으로 지정한다. 다른 인원 결과는 별도 접두사로 저장하고
-Summarize-StdPort.ps1 -RuntimeActors 70000으로 해당 결과를 집계한다.
+tools/analysis/Summarize-StdPort.ps1 -RuntimeActors 70000으로 해당 결과를 집계한다.
 
 70,000개 검증 실행(30초, seed 42, 이동 시도 2,000회/초, 입장 기간 5,000ms,
 확인 간격 1ms)의 평균 Actor FPS는 15.163이었다. 중복 실행·미갱신·잔여 Task는 0이었다.
@@ -129,7 +129,7 @@ Summarize-StdPort.ps1 -RuntimeActors 70000으로 해당 결과를 집계한다.
 전체 프로세스 CPU 시간은 24.453초, 평균 약 0.809개 코어 사용에 해당하며 Actor FPS는 15.213이었다.
 CPU 수집은 맵 준비·입장·종료도 포함하며, 입장 후 평균은 시작 약 6초 이후 표본으로 계산했다.
 이는 Worker busy/idle 벽시계 시간과 다른 실제 프로세스 CPU 시간 측정이다.
-Measure-RuntimeCpu.ps1로 재현하며 로그·summary.json·samples.csv는 artifacts/actors-70000/cpu에 있다.
+tools/benchmark/Measure-RuntimeCpu.ps1로 재현하며 로그·summary.json·samples.csv는 artifacts/actors-70000/cpu에 있다.
 재측정할 때는 -OutputDirectory로 새 폴더를 지정해 기존 결과를 보존한다.
 후속 20 FPS 부족 원인 계측과 CPU 한계 탐색은 CAPACITY-RESULTS.md를 참고한다.
 Actor 수 증가 실험은 ACTOR-SCALE-RESULTS.md에 정리했다. 마지막 선택 인수 mapSide는

@@ -64,6 +64,6 @@ CPU 사용률은 머신 전체 논리 CPU 대비 비율이다. 두 프로세스 
 
 - `Source/AreaUpdate.sln` MSBuild Release/Debug x64 빌드 성공.
 - 두 구성 `AreaTests`, 비교 `--test`, `--handoff-chain-probe` 통과.
-- `Format-Code.ps1 -All -Check`, `Check-CodeStyle.ps1`, `git diff --check` 통과.
+- `tools/quality/Format-Code.ps1 -All -Check`, `tools/quality/Check-CodeStyle.ps1`, `git diff --check` 통과.
 - 기존 C++ BOM을 보존하고 변경 파일은 CRLF로 정리했다.
 - Core, ObjectUpdate 실행 정책, frozen Original/Baseline은 수정하지 않았다.

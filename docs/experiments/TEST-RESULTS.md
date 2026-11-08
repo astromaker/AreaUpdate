@@ -66,8 +66,8 @@ S13의 tick 처리시간 p99 중앙값은 Job **27.153ms**, Area **10.288ms**였
 ## 재현 및 원시 자료
 
 ```powershell
-.\Run-ScenarioComparison.ps1
-.\Run-ScenarioComparison.ps1 -SummarizeOnly
+.\tools\benchmark\Run-ScenarioComparison.ps1
+.\tools\benchmark\Run-ScenarioComparison.ps1 -SummarizeOnly
 ```
 
 - `artifacts/scenarios/environment.json`: 환경과 바이너리 식별값

@@ -95,7 +95,7 @@ Object 28만은 약 3.98% 높은 FPS였지만, 모든 부하나 지연 지표에
   완전한 무계측 모드는 아니다.
 - 상세 timer trace와 진단 OFF는 양립하지 않으므로 설정 시 예외로 거부한다.
 - 예제는 `AREAUPDATE_WORKER_DIAGNOSTICS=0/1`로 선택하며 생략 시 ON이다.
-- `Measure-RuntimeCpu.ps1`는 OFF의 `maxTimerDelayMs`, `maxQueueDelayMs`를 null로 기록한다.
+- `tools/benchmark/Measure-RuntimeCpu.ps1`는 OFF의 `maxTimerDelayMs`, `maxQueueDelayMs`를 null로 기록한다.
   미측정 값을 0ms로 해석하지 않도록 ON/OFF와 표시 지원 여부도 기록한다.
 - 이전 바이너리는 옵션 표시가 없고 항상 ON이었으므로 ON으로 해석하되 `workerDiagnosticsReported=false`로 구분한다.
 
@@ -118,10 +118,10 @@ Object 28만은 약 3.98% 높은 FPS였지만, 모든 부하나 지연 지표에
 - 성능 측정 40회 모두 실행 코드 0, neverUpdated=0. 통계 ON 36회 Task 잔존 0 확인.
 - 결과: `artifacts/object-next/{stats,direct,timer,diagnostics}-comparison/results.csv`.
 - 집계: `artifacts/object-next/summary.csv`. 기준 관련 소스는 `reference`, 단계별 EXE는 해당 후보 폴더.
-- `Run-ObjectNextComparison.ps1`로 보관한 두 EXE를 교차 비교할 수 있다.
+- `tools/experiments/Run-ObjectNextComparison.ps1`로 보관한 두 EXE를 교차 비교할 수 있다.
 
 진단만 재비교하는 예:
 
 ```powershell
-.\Run-ObjectNextComparison.ps1 -BaselineDirectory artifacts/object-next/diagnostics -CandidateDirectory artifacts/object-next/diagnostics -BaselineDiagnostics 1 -CandidateDiagnostics 0 -Modes job,area -OutputDirectory artifacts/object-next/diagnostics-repeat
+.\tools\experiments\Run-ObjectNextComparison.ps1 -BaselineDirectory artifacts/object-next/diagnostics -CandidateDirectory artifacts/object-next/diagnostics -BaselineDiagnostics 1 -CandidateDiagnostics 0 -Modes job,area -OutputDirectory artifacts/object-next/diagnostics-repeat
 ```

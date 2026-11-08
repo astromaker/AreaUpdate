@@ -30,7 +30,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "D:\github\AreaUpdate\Collec
 
 모두 현재 radius 모델(`legacy`)이며 기본 예약 정렬 ON이다. CPU는 6초 준비 후 기록한다. 전체 프로세스 실행 시간은 기록보다 길고, 저장 후처리 동안 대상이 끝날 수도 있다. 실행 파일/PDB 해시, 실행 설정, 대상 PID, 로그와 추적 정의를 함께 보관한다.
 
-`RadiusCpu.wprp`는 CPU 샘플·프로세스/이미지 정보·CSwitch·ReadyThread와 관련 스택만 선택한다. CPU 샘플과 대기 스택의 횟수를 같은 CPU 점유율로 합산하지 않는다. ETL의 유실 이벤트/버퍼와 심벌 해석 상태를 먼저 검증해야 한다.
+`tools/profiling/RadiusCpu.wprp`는 CPU 샘플·프로세스/이미지 정보·CSwitch·ReadyThread와 관련 스택만 선택한다. CPU 샘플과 대기 스택의 횟수를 같은 CPU 점유율로 합산하지 않는다. ETL의 유실 이벤트/버퍼와 심벌 해석 상태를 먼저 검증해야 한다.
 
 ## 이후 분석 순서
 
@@ -38,4 +38,4 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "D:\github\AreaUpdate\Collec
 2. hol의 관측 구간과 스레드가 실행·대기·Ready 상태인 구간을 비교한다. ETW만으로 radius mask가 실제 해제된 정확한 시각까지 보장되는 것은 아니며, 남는 범위는 확인 불가로 남긴다.
 3. latency의 timer trace에서 휠 반올림, 대기 복귀, timer batch 앞선 callback 처리 시간을 구분하고 ETW 실행 상태와 맞춘다.
 
-OS 심벌이 없는 프레임은 미해석으로 남긴다. 수집과 자동 내보내기는 `Collect-RadiusProfiles.ps1`, 단일 사례의 재내보내기는 `Export-RadiusProfile.ps1`에서 수행한다. 본 작업에서는 C++ 실행 로직을 수정하지 않았다.
+OS 심벌이 없는 프레임은 미해석으로 남긴다. 수집과 자동 내보내기는 `tools/profiling/Collect-RadiusProfiles.ps1`, 단일 사례의 재내보내기는 `tools/profiling/Export-RadiusProfile.ps1`에서 수행한다. 본 작업에서는 C++ 실행 로직을 수정하지 않았다.

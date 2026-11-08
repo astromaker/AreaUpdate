@@ -63,7 +63,7 @@ Release/Debug 빌드, AreaTests, UpdateComparison --test와 서식·명명 검�
 현재 소스는 sleep_for 버전이다. 조건 변수 Worker 소스는
 artifacts/std-port/condition-source에, 이전 실행 파일은 std 폴더에 보존했다.
 sleep 폴더의 실행 파일·로그·runs.csv가 이번 측정 대상이다.
-Measure-StdPort.ps1 -Stage sleep -RuntimeOnly -RuntimeActors 10000으로 당시 인원 조건을 지정할 수 있다.
+tools/experiments/Measure-StdPort.ps1 -Stage sleep -RuntimeOnly -RuntimeActors 10000으로 당시 인원 조건을 지정할 수 있다.
 후속 기본값은 70,000개이며 다른 인원의 측정 파일에는 별도 접두사를 사용한다.
 
 결론: 단순 sleep_for(1ms) 폴링도 이 환경에서 기존 고해상도 타이머의 갱신률을 회복하지 못했다.

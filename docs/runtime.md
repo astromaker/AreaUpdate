@@ -34,7 +34,7 @@ adaptive=true이면 방문 1ms/다른 파티션 서비스 대기 10ms 기준 안
   기본 false인 Ticker는 최대 1ms 제한 대기로 다시 확인하므로 기존 무알림 Ticker도 멈추지 않습니다.
   기본 m_pollingWait는 false로 signal을 사용합니다. set_polling_wait(true)를 명시하면 기존 sleep_for(1ms)를 사용합니다.
   설정은 시작 전에만 변경할 수 있습니다. 후속 Area 진단에서 poll의 복귀 지연이 확인돼 기본값을 signal로 변경했습니다.
-  예제와 Measure-RuntimeCpu.ps1도 기본 signal이며, 이전 poll 실험 재현은 poll을 명시해야 합니다.
+  예제와 tools/benchmark/Measure-RuntimeCpu.ps1도 기본 signal이며, 이전 poll 실험 재현은 poll을 명시해야 합니다.
 - 즉시 작업과 현재 대기 만료보다 이른 타이머 요청만 대기를 깨웁니다.
   더 늦은 타이머는 이미 정해진 기상 시점에 등록 요청을 일괄 처리합니다.
   대기 만료 시각을 먼저 공개한 뒤 대기 상태를 표시하고 큐를 다시 검사합니다.
@@ -120,7 +120,7 @@ Worker 내부의 고정 wheel 저장 공간은 동적 보유 바이트에 포함
 기존 기준 측정 파일을 덮어쓰지 않고 측정하려면 다음 명령을 사용합니다.
 
 ```powershell
-.\Run-Measurements.ps1 -StressSeconds 30 -SampleSeconds 10 -OutputDirectory artifacts/runtime-linked
+.\tools\experiments\Run-Measurements.ps1 -StressSeconds 30 -SampleSeconds 10 -OutputDirectory artifacts/runtime-linked
 ```
 
 ## 변경 후 측정

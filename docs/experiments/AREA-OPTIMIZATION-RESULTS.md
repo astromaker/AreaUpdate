@@ -94,7 +94,7 @@ CPU도 100%에 도달하지 않으므로 모든 스케줄링 병목이 해결됐
 이번 결과는 최대 성능 달성 선언이 아니라, 측정으로 확인한 한 단계의 개선이다.
 
 Release/Debug 솔루션 빌드, AreaTests, UpdateComparison --test,
-Format-Code.ps1 -All -Check, Check-CodeStyle.ps1을 통과했다.
+tools/quality/Format-Code.ps1 -All -Check, tools/quality/Check-CodeStyle.ps1을 통과했다.
 수정 C++ 파일의 UTF-8 BOM과 CRLF를 확인했다.
 
 ## 측정 방식

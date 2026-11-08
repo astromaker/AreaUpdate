@@ -135,9 +135,9 @@ runtime.log/samples.csv/summary.json/timer-traces.csv를 보존했다.
 ```powershell
 # 마지막 50은 타이머 지연 추적 임계값. 생략 또는 0은 비활성.
 .\Source\x64\Release\AreaUpdateExample.exe 30 10000 286 42 5000 1 0 121 job 50
-.\Measure-RuntimeCpu.ps1 -Seconds 30 -Actors 10000 -MovesPerSecond 286 -MapSide 121 -Mode job -TimerTraceThresholdMs 50 -OutputDirectory artifacts/new-timer-run
-.\Analyze-TimerTraces.ps1 -RootPath artifacts/new-timer-run
+.\tools\benchmark\Measure-RuntimeCpu.ps1 -Seconds 30 -Actors 10000 -MovesPerSecond 286 -MapSide 121 -Mode job -TimerTraceThresholdMs 50 -OutputDirectory artifacts/new-timer-run
+.\tools\analysis\Analyze-TimerTraces.ps1 -RootPath artifacts/new-timer-run
 ```
 
-Run-WheelResolutionComparison.ps1은 보존한 두 실행 파일로 비교한다.
-Analyze-TimerTraces.ps1 -SelfTest로 분해 계산을 검증할 수 있다.
+tools/experiments/Run-WheelResolutionComparison.ps1은 보존한 두 실행 파일로 비교한다.
+tools/analysis/Analyze-TimerTraces.ps1 -SelfTest로 분해 계산을 검증할 수 있다.

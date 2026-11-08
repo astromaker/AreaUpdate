@@ -53,8 +53,8 @@ blocked_return도 순수 장벽 수면 시간이 아니다. OS 기상 지연과 
 ## 재현과 자료
 
 ```powershell
-.\Run-AreaProfile.ps1 -OutputDirectory artifacts/area-profile-repeat
-.\Analyze-AreaProfile.ps1 -InputDirectory artifacts/area-profile-repeat
+.\tools\profiling\Run-AreaProfile.ps1 -OutputDirectory artifacts/area-profile-repeat
+.\tools\analysis\Analyze-AreaProfile.ps1 -InputDirectory artifacts/area-profile-repeat
 ```
 
 실행 순서와 설정은 `artifacts/area-profile/plan.csv`, 실행별 요약은 `results.csv`에 보존한다.
@@ -142,6 +142,6 @@ profile 구간은 완료 시각 기준, main 보고 구간은 보고 끝 시각 
 이번 작업에서 스케줄링 정책·공평성·공간 반경·batch 크기는 변경하지 않았다.
 
 Release/Debug MSBuild, AreaTests, Release UpdateComparison --test,
-Format-Code.ps1 -All -Check, Check-CodeStyle.ps1을 통과했다.
+tools/quality/Format-Code.ps1 -All -Check, tools/quality/Check-CodeStyle.ps1을 통과했다.
 회귀 검사에서 histogram 경계/병합, OFF 상태, 타이머 표본 수, 최초 활성화 제외,
 지연 합계 일관성을 확인했다. 모든 측정은 Task 수명 검증 통과, overlaps/미갱신 Actor/종료 코드 0이다.

@@ -106,7 +106,7 @@ Worker burst, 알림 확대, Task 병합을 반복하는 것보다 이 순서가
 
 ## 재현·검증
 
-- 분석 도구: `Analyze-RadiusEtw.py`. 표준 HTML/CSV parser로 내보내기를 읽고, C++ 템플릿 이름이 HTML tag처럼 출력된 경우를 처리한다.
+- 분석 도구: `tools/analysis/Analyze-RadiusEtw.py`. 표준 HTML/CSV parser로 내보내기를 읽고, C++ 템플릿 이름이 HTML tag처럼 출력된 경우를 처리한다.
 - 검증: 실행 파일/PDB 해시, 대상 PID, 유실 0, 자체 샘플 합, 타이머 구간 합, raw counter 시각 변환을 확인했다.
 - 도구 단위 검사: 템플릿 이름 보존, 시각 변환, Waiting/Ready/Running 분류를 고정 입력으로 검증했다.
 - 결과: 각 사례 `export/stack-tables.json`, `functions.csv`. hol/latency에는 `offcpu.csv`, `timer-paths.csv`가 있고 capacity에는 `cpu-ip.csv`, `area-update.asm`, `radius-acquire.asm`도 있다.

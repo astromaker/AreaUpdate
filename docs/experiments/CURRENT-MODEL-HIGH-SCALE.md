@@ -70,7 +70,7 @@ Area는 두 단계 모두 최저 FPS·P99·최대 간격도 더 좋았다.
 | 420,000 | 686.90MiB | 790.15MiB | 789.26MiB |
 | 560,000 | 911.94MiB | 1,045.19MiB | 1,051.16MiB |
 
-- `Measure-RuntimeCpu.ps1 -MaxPrivateMemoryMB`를 추가했다. 예산 초과 시 자식 프로세스를 종료하고 측정을 실패 처리한다.
+- `tools/benchmark/Measure-RuntimeCpu.ps1 -MaxPrivateMemoryMB`를 추가했다. 예산 초과 시 자식 프로세스를 종료하고 측정을 실패 처리한다.
 - 약 250ms 간격 관측에 의한 보호이며 OS의 엄격한 메모리 할당 상한은 아니다.
 - 본 측정에서 상한 초과는 없었다. OS 페이지가 전혀 교체되지 않았다고 증명하는 시험은 아니다.
 - 측정 후 별도 프로세스에 의도적으로 1MiB 상한을 설정해 초과 시 자동 종료되는지 확인했다.
@@ -86,5 +86,5 @@ Area는 두 단계 모두 최저 FPS·P99·최대 간격도 더 좋았다.
 - `environment.json`에 해시와 설정, `plan.csv`에 안전 예산 보존.
 
 ```powershell
-.\Run-CurrentModelComparison.ps1 -ActorCounts 420000,560000 -SourceBinaryDirectory artifacts/current-model-comparison/bin -MemoryReferenceCsv artifacts/current-model-comparison/results.csv -OutputDirectory artifacts/current-model-high-scale-repeat
+.\tools\benchmark\Run-CurrentModelComparison.ps1 -ActorCounts 420000,560000 -SourceBinaryDirectory artifacts/current-model-comparison/bin -MemoryReferenceCsv artifacts/current-model-comparison/results.csv -OutputDirectory artifacts/current-model-high-scale-repeat
 ```

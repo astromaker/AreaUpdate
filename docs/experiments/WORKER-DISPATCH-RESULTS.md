@@ -72,9 +72,9 @@ Task 약 87% 감소에 비해 과부하 FPS 변화는 약 +2.79%/+1.27%였고, �
 
 각 성능 실행은 미갱신 Actor 0, 종료 코드 0, live Task 0이었다. 예약 병합의 OFF/ON 각각 균등/경계 5초 ID 검사도 통과했다. 최종 코드에는 진단과 HOL 회귀 검사만 남기고 두 실험 기능은 제거했다.
 
-- `Run-WorkerDispatch.ps1`: 현 소스의 큐/HOL 진단 OFF/ON 재현.
-- `Run-WorkerService.ps1`: 보관된 Worker 실험 바이너리로만 재현. 기본 입력은 `artifacts/worker-dispatch/budget/bin/AreaUpdateExample.exe`다.
-- `Run-RadiusReservationMerge.ps1`: 보관된 예약 병합 실험 바이너리로 재현. 현 소스에는 해당 옵션이 없다.
+- `tools/experiments/Run-WorkerDispatch.ps1`: 현 소스의 큐/HOL 진단 OFF/ON 재현.
+- `tools/experiments/Run-WorkerService.ps1`: 보관된 Worker 실험 바이너리로만 재현. 기본 입력은 `artifacts/worker-dispatch/budget/bin/AreaUpdateExample.exe`다.
+- `tools/experiments/Run-RadiusReservationMerge.ps1`: 보관된 예약 병합 실험 바이너리로 재현. 현 소스에는 해당 옵션이 없다.
 - 원자료: `artifacts/worker-dispatch/queues`, `budget`, `reservation-merge`.
 - 실험 소스: `artifacts/worker-dispatch/service-source`, `reservation-source`. 실행 파일과 소스 보관본을 혼동하지 않는다.
 
@@ -84,4 +84,4 @@ Task 약 87% 감소에 비해 과부하 FPS 변화는 약 +2.79%/+1.27%였고, �
 
 실험 제거 후 Release/Debug x64 솔루션 빌드, 두 구성 AreaTests와 비교 `--test`, Release 인계 회귀 검사를 통과했다. 최종 큐 진단 ON 상태의 5천 Actor 경계 배치 10초 검사도 이벤트 124,296건 전부 적용, overlap 0, 소유권 왕복 성공, live Task 0이었다.
 
-`Format-Code.ps1 -All -Check`, `Check-CodeStyle.ps1`, 세 스크립트 구문 검사, `git diff --check`를 통과했다. Core 파일 SHA256 전체가 기존 기준과 일치하며 실험 전 Worker 소스와도 동일하다. 기존 BOM/CRLF와 C++ 언어 설정을 유지했다. 두 실험 기능의 환경 변수는 현 소스에서 지원하지 않으므로 재현에는 위에 명시한 보관 바이너리를 사용해야 한다.
+`tools/quality/Format-Code.ps1 -All -Check`, `tools/quality/Check-CodeStyle.ps1`, 세 스크립트 구문 검사, `git diff --check`를 통과했다. Core 파일 SHA256 전체가 기존 기준과 일치하며 실험 전 Worker 소스와도 동일하다. 기존 BOM/CRLF와 C++ 언어 설정을 유지했다. 두 실험 기능의 환경 변수는 현 소스에서 지원하지 않으므로 재현에는 위에 명시한 보관 바이너리를 사용해야 한다.

@@ -114,5 +114,5 @@ seed 42의 후보 Object에서 관측한 예다.
 재현은 보관한 실험 바이너리를 사용하므로 현재 기본 소스를 다시 바꾸지 않는다.
 
 ```powershell
-.\Run-ActiveWaitComparison.ps1 -OutputDirectory artifacts/active-wait/recheck
+.\tools\experiments\Run-ActiveWaitComparison.ps1 -OutputDirectory artifacts/active-wait/recheck
 ```

@@ -67,12 +67,12 @@ Worker·ObjectUpdate·공평성 정책은 수정하지 않았다. Area 공통 �
 - 비교 실행에서 neverUpdated=0, processExitCode=0, tasksLive=0 확인.
 - 최종 채택 코드: 솔루션 Release/Debug x64 빌드와 양쪽 AreaTests 통과.
 - 최종 Release의 area/legacy × uniform/boundary 검증: overlaps=0, sent=applied, tasks_live=0.
-- `Format-Code.ps1 -All -Check` 33개 파일 및 `Check-CodeStyle.ps1` 전체 검사 통과.
+- `tools/quality/Format-Code.ps1 -All -Check` 33개 파일 및 `tools/quality/Check-CodeStyle.ps1` 전체 검사 통과.
 - 변경 C++ 파일의 UTF-8 BOM·CRLF 보존, `git diff --check` 통과.
 
 ## 재현 자료
 
-- `Run-HotpathComparison.ps1`: 두 실행 파일 묶음을 교차 실행하고 결과 CSV 저장.
+- `tools/experiments/Run-HotpathComparison.ps1`: 두 실행 파일 묶음을 교차 실행하고 결과 CSV 저장.
 - `artifacts/area-hotpath/{clock,path,mask}-comparison/results.csv`: 원시 결과와 CPU·공평성·지연 지표.
 - 각 비교 폴더의 `binaries.csv`: 실행 파일 SHA256.
 - `artifacts/area-hotpath/reference`: 실험 전 관련 소스.
@@ -82,5 +82,5 @@ Worker·ObjectUpdate·공평성 정책은 수정하지 않았다. Area 공통 �
 예시: 기준/채택 후보를 다시 비교하려면 새 출력 경로를 지정한다.
 
 ```powershell
-.\Run-HotpathComparison.ps1 -BaselineDirectory artifacts/area-hotpath/baseline -CandidateDirectory artifacts/area-hotpath/area-path -OutputDirectory artifacts/area-hotpath/path-recheck
+.\tools\experiments\Run-HotpathComparison.ps1 -BaselineDirectory artifacts/area-hotpath/baseline -CandidateDirectory artifacts/area-hotpath/area-path -OutputDirectory artifacts/area-hotpath/path-recheck
 ```

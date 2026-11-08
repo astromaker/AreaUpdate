@@ -63,8 +63,8 @@ Release x64, signal, 고정 50ms, Worker 8개, Task 통계 ON, 타이머 5ms/256
 실행 중 다른 빌드·분석 작업을 병행하지 않는다. 다른 시스템 프로세스까지 통제한 것은 아니다.
 
 ```powershell
-.\Run-AreaProfile.ps1 -Suite queue -OutputDirectory artifacts/area-queue-profile-repeat
-.\Analyze-AreaProfile.ps1 -InputDirectory artifacts/area-queue-profile-repeat
+.\tools\profiling\Run-AreaProfile.ps1 -Suite queue -OutputDirectory artifacts/area-queue-profile-repeat
+.\tools\analysis\Analyze-AreaProfile.ps1 -InputDirectory artifacts/area-queue-profile-repeat
 ```
 
 측정 파일은 `artifacts/area-queue-profile`에 보존한다. 6초 이후 1초 구간들을 합산해 분석한다.

@@ -121,7 +121,7 @@ Release/Debug 솔루션 빌드와 새 회귀 테스트를 통과했다.
 
 ```powershell
 # 보존된 before/after 실행 파일로 새 결과 폴더에서 비교
-.\Run-FixedAreaComparison.ps1 -OutputDirectory artifacts/area-fixed-repeat
+.\tools\experiments\Run-FixedAreaComparison.ps1 -OutputDirectory artifacts/area-fixed-repeat
 # 현재 코드에서 당시 조건을 재현: 두 모델 모두 고정 예약 + poll 명시
 .\Source\x64\Release\AreaUpdateExample.exe 20 70000 2000 42 5000 1 0 320 area 0 poll
 .\Source\x64\Release\AreaUpdateExample.exe 20 70000 2000 42 5000 1 0 320 job 0 poll

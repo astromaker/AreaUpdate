@@ -116,7 +116,7 @@ Running에는 그 스레드 문맥에서의 kernel/추적 작업 등이 포함�
 경량 기록에서는 회귀가 보이지 않았지만, 비계측 및 Actor 표본 대조에서는 다시 재현됐다.
 후보의 Dispatcher 대기는 개선됐고 타이머 꼬리 지연·대기 초과가 악화된 점을 확인했다.
 
-`ObjectCpuLight.wprp`는 CPU sampling 스택과 CSwitch/Ready 이벤트를 유지하고,
+`tools/profiling/ObjectCpuLight.wprp`는 CPU sampling 스택과 CSwitch/Ready 이벤트를 유지하고,
 CSwitch/Ready마다의 스택 수집만 제거한다. 7만 기준/후보를 두 번씩 다시 비교하도록 준비했다.
 아래는 사용한 후속 수집 명령이다.
 
@@ -132,8 +132,8 @@ atomic별 비중·캐시 미스·false sharing은 이번 자료에서 확인 불
 
 ## 분석 자료와 재현
 
-- `Export-ObjectProfiles.ps1`: 심볼 포함 CPU 함수/스택, thread CPU, Ready, 스케줄링 CSV 추출.
-- `Analyze-ObjectProfiles.py`: 해시·PID·샘플 합·유실 검사와 함수 분류, 스레드 상태 계산.
+- `tools/profiling/Export-ObjectProfiles.ps1`: 심볼 포함 CPU 함수/스택, thread CPU, Ready, 스케줄링 CSV 추출.
+- `tools/analysis/Analyze-ObjectProfiles.py`: 해시·PID·샘플 합·유실 검사와 함수 분류, 스레드 상태 계산.
 - `artifacts/object-profiles-admin/analysis-summary.csv`, `comparison.csv`: 요약.
 - 각 기록의 `export/object-analysis.json`, `object-functions.csv`, `object-thread-states.csv`: 상세.
 - ETL span은 약 12.34~15.06초이며 요청한 CPU 10초와 동일하지 않았다.

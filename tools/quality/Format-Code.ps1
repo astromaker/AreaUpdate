@@ -3,9 +3,11 @@ param(
     [switch]$All,
     [switch]$Check
 )
+$repositoryRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+
 
 $ErrorActionPreference = 'Stop'
-$root = $PSScriptRoot
+$root = $repositoryRoot
 $formatter = Get-Command clang-format -ErrorAction Stop
 $version = & $formatter.Source --version
 if ($LASTEXITCODE -ne 0 -or $version -notmatch 'version\s+(\d+)' -or [int]$Matches[1] -lt 18) {

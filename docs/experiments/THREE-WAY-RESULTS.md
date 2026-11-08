@@ -59,7 +59,7 @@ S04~S11의 전체 맵은 320×320이며 중앙 집중은 64×64 배치다. S14/S
 최종 결과는 `artifacts/scenarios-three-way/runs.csv`, `summary.csv`, `environment.json`에 있다. 실제 실행기 로그는 `artifacts/runtime-optimized.log`다. 메모리는 모델별 전체 맵 자료구조가 달라 동등한 서버 AOI 메모리 비교가 아니다. 각 조건 3회뿐이며 시스템 부하와 실행 변동을 통제한 통계적 결론은 아니다.
 
 ```powershell
-.\Run-ScenarioComparison.ps1 -WithOriginal -Only 'S04,S05,S06,S10,S11,S14,S15'
+.\tools\benchmark\Run-ScenarioComparison.ps1 -WithOriginal -Only 'S04,S05,S06,S10,S11,S14,S15'
 # 같은 바이너리·설정의 중단된 실행 이어서 수행
-.\Run-ScenarioComparison.ps1 -WithOriginal -Only 'S04,S05,S06,S10,S11,S14,S15' -Resume
+.\tools\benchmark\Run-ScenarioComparison.ps1 -WithOriginal -Only 'S04,S05,S06,S10,S11,S14,S15' -Resume
 ```

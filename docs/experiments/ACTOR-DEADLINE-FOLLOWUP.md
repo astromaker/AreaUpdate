@@ -125,10 +125,10 @@ FPS 개선은 각각 약 19.5%/14.3%였고 예약당 Task 비율은 약 0.38~0.4
 
 ## 재현 자료
 
-- `Run-ActorDeadlineValidation.ps1`: 장시간/무결성 및 28만 Actor 검사. 현재 기본 예약 정렬 ON이며 `-SortTimers 0`으로 대조 가능하다.
-- `Run-RadiusQueueProfile.ps1`: deadline 수정 전/후, 계측 OFF/ON, 이동 없음/저부하 대조군.
-- `Analyze-ActorDeadlineTrace.ps1`: Actor deadline 지연과 각 구간 합 검증.
-- `Run-RadiusTimerOrder.ps1`: 같은 실행 파일의 정렬 OFF/ON 비교와 ID 검사.
+- `tools/validation/Run-ActorDeadlineValidation.ps1`: 장시간/무결성 및 28만 Actor 검사. 현재 기본 예약 정렬 ON이며 `-SortTimers 0`으로 대조 가능하다.
+- `tools/profiling/Run-RadiusQueueProfile.ps1`: deadline 수정 전/후, 계측 OFF/ON, 이동 없음/저부하 대조군.
+- `tools/analysis/Analyze-ActorDeadlineTrace.ps1`: Actor deadline 지연과 각 구간 합 검증.
+- `tools/experiments/Run-RadiusTimerOrder.ps1`: 같은 실행 파일의 정렬 OFF/ON 비교와 ID 검사.
 - 원자료: `artifacts/actor-deadline-followup/`의 `stability`, `capacity`, `queue-profile`, `timer-order`, `final`.
 
 실게임 로직은 제공되지 않았다. 수분 단위 합성 검사이며 다시간 운영, 무누수, 무데이터레이스, 최대 지연의 실시간 보장을 증명하지 않는다.

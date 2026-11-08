@@ -15,18 +15,19 @@
 
 ## 도구와 원본 자료
 
-재현 스크립트는 저장소 루트에 유지했다. 문서 위치와 무관하게 모든 명령은 저장소 루트에서 실행한다.
+재현 스크립트는 [tools](../../tools/README.md) 아래 용도별로 분류했다.
+문서 위치와 무관하게 모든 명령은 저장소 루트에서 실행한다.
 옛 보고서는 당시의 옵션과 실행 파일을 전제로 하므로 현행 바이너리에 그대로 적용할 수 있다고 가정하지 않는다.
 
 | 용도 | 주요 도구 |
 |---|---|
-| 세 모델 비교 | Run-CurrentModelComparison.ps1, Measure-RuntimeCpu.ps1 |
-| 통제된 상호작용 비교 | Run-ScenarioComparison.ps1, Test-ScenarioAggregation.ps1 |
-| 이동·소유권·공간 검증 | Run-MotionChecks.ps1, Run-ActorDeadlineValidation.ps1 |
-| Area 프로파일 | Collect-AreaProfiles.ps1, Export-AreaProfiles.ps1, Analyze-AreaProfile.ps1 |
-| 예전 Area 프로파일 | Collect-RadiusProfiles.ps1, Export-RadiusProfile.ps1, Analyze-RadiusEtw.py |
-| Object 프로파일 | Collect-ObjectProfiles.ps1, Export-ObjectProfiles.ps1, Analyze-ObjectProfiles.py |
-| 기각한 후보 재현 | Run-ObjectNextComparison.ps1, Run-ActiveWaitComparison.ps1 |
+| 세 모델 비교 | tools/benchmark/Run-CurrentModelComparison.ps1, tools/benchmark/Measure-RuntimeCpu.ps1 |
+| 통제된 상호작용 비교 | tools/benchmark/Run-ScenarioComparison.ps1, tools/validation/Test-ScenarioAggregation.ps1 |
+| 이동·소유권·공간 검증 | tools/validation/Run-MotionChecks.ps1, tools/validation/Run-ActorDeadlineValidation.ps1 |
+| Area 프로파일 | tools/profiling/Collect-AreaProfiles.ps1, tools/profiling/Export-AreaProfiles.ps1, tools/analysis/Analyze-AreaProfile.ps1 |
+| 예전 Area 프로파일 | tools/profiling/Collect-RadiusProfiles.ps1, tools/profiling/Export-RadiusProfile.ps1, tools/analysis/Analyze-RadiusEtw.py |
+| Object 프로파일 | tools/profiling/Collect-ObjectProfiles.ps1, tools/profiling/Export-ObjectProfiles.ps1, tools/analysis/Analyze-ObjectProfiles.py |
+| 기각한 후보 재현 | tools/experiments/Run-ObjectNextComparison.ps1, tools/experiments/Run-ActiveWaitComparison.ps1 |
 
 특히 능동 대기 등 기각한 후보의 재현은 artifacts/ 아래 보관된 실험 EXE·소스가 필요하다.
 보고서와 스크립트만 받은 새 체크아웃에서는 해당 바이너리가 없어 재현되지 않을 수 있다.

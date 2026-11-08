@@ -113,11 +113,11 @@ CPU가 남는다고 단순히 sleep만 없애면 목표를 달성한다고 결�
 ```powershell
 # 마지막 인수가 Actor 연산 횟수
 .\Source\x64\Release\AreaUpdateExample.exe 20 70000 2000 42 5000 1 1000
-.\Measure-RuntimeCpu.ps1 -Seconds 20 -ActorWork 1000 -OutputDirectory artifacts/new-capacity-run
+.\tools\benchmark\Measure-RuntimeCpu.ps1 -Seconds 20 -ActorWork 1000 -OutputDirectory artifacts/new-capacity-run
 .\Source\x64\Release\UpdateComparison.exe --cpu-control 10
 ```
 
-Run-Capacity.ps1은 부하를 증가시키며 두 차례 정상 상태 CPU 90% 이상이면 탐색을 종료한다.
+tools/experiments/Run-Capacity.ps1은 부하를 증가시키며 두 차례 정상 상태 CPU 90% 이상이면 탐색을 종료한다.
 이번에는 해당 조건에 도달하지 않았다. 기존 artifacts/capacity를 덮어쓰지 않도록 보호한다.
 results.csv, 단계별 summary.json/runtime.log/samples.csv와 측정 실행 파일·해시는
 artifacts/capacity에 보존했다. 전환 전 소스도 before-source에 보존했다.

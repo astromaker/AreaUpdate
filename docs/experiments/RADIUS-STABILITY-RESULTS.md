@@ -31,7 +31,7 @@ MotionInteractionProbe에는 정상 측정 구간의 Actor 갱신 간격 히스�
 
 ## 실행 계획
 
-Run-RadiusStability.ps1에서 다음을 순차 실행했다. Release x64, Task 통계 ON, Worker 8개, signal, fast 및 타이머/게시 묶음 ON이다. 보완 전 알림 유예가 아니라 수정 후 merge OFF/ON을 비교한다. 새 Area와 공통 Core는 변경하지 않았다.
+tools/experiments/Run-RadiusStability.ps1에서 다음을 순차 실행했다. Release x64, Task 통계 ON, Worker 8개, signal, fast 및 타이머/게시 묶음 ON이다. 보완 전 알림 유예가 아니라 수정 후 merge OFF/ON을 비교한다. 새 Area와 공통 Core는 변경하지 않았다.
 
 | 검사 | 사례 | 실행 길이 |
 |---|---|---|
@@ -108,9 +108,9 @@ Task 통계 ON, 28만 Actor, 각 30초, seed 42/43 평균이다. 이 부하는 2
 
 ## 빌드와 재현
 
-- Source/AreaUpdate.sln MSBuild Release/Debug x64 빌드, AreaTests, UpdateComparison --test, Test-RadiusFollowup.ps1 검증 통과.
+- Source/AreaUpdate.sln MSBuild Release/Debug x64 빌드, AreaTests, UpdateComparison --test, tools/validation/Test-RadiusFollowup.ps1 검증 통과.
 - timer/request × push/push_batch의 첫 게시 gate 검사에서, 생산자 callback이 막혀 있어도 독립 소비자가 진행함을 확인했다.
-- Format-Code.ps1 -All -Check, Check-CodeStyle.ps1 통과. C++의 기존 BOM 및 CRLF를 보존했다.
+- tools/quality/Format-Code.ps1 -All -Check, tools/quality/Check-CodeStyle.ps1 통과. C++의 기존 BOM 및 CRLF를 보존했다.
 - artifacts/radius-stability/before는 수정 전 재현 바이너리/로그, delay는 36조합 원자료, capacity는 28만 검증, motion은 8개 연속 부하 결과와 1초 메모리 표본, validation은 회귀 검사 로그다.
 
-Run-RadiusStability.ps1의 delay, capacity, motion 단계로 재현할 수 있다. 같은 출력 디렉터리는 덮어쓰지 않는다.
+tools/experiments/Run-RadiusStability.ps1의 delay, capacity, motion 단계로 재현할 수 있다. 같은 출력 디렉터리는 덮어쓰지 않는다.

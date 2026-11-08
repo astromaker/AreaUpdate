@@ -138,5 +138,5 @@ OS timer 해상도·실행 재배정·내부 mutex 비용 중 어느 부분이 �
 새 경로로 재실행:
 
 ```powershell
-.\Run-WaitReturnComparison.ps1 -OutputDirectory artifacts/wait-return/recheck
+.\tools\experiments\Run-WaitReturnComparison.ps1 -OutputDirectory artifacts/wait-return/recheck
 ```

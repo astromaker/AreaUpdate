@@ -18,7 +18,7 @@
 - Object 모드, signal, 고정 주기, Task 통계 ON, 상세 timer/Object/Dispatcher 표본 추적 OFF.
 - 대상은 기본 30초 실행. 시작 6초 후 CPU 프로파일을 10초 요청한다.
   실제 ETL 기록 범위는 시작/중단 호출과 병합의 영향을 포함하므로 요청한 10초와 동일하다고 가정하지 않는다.
-- 기존 검증된 `RadiusCpu.wprp`의 CPU sampling·CSwitch·ReadyThread 스택 설정을 재사용한다.
+- 기존 검증된 `tools/profiling/RadiusCpu.wprp`의 CPU sampling·CSwitch·ReadyThread 스택 설정을 재사용한다.
 - 대상 private 메모리 1,500MiB 상한과 종료 감시를 적용한다.
 - 자기 기록의 고유 instance만 중단·취소하며 다른 WPR 기록을 강제 취소하지 않는다.
 
@@ -36,7 +36,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File D:\github\AreaUpdate\Collect
 
 ## 수집 후 분석 계획
 
-`Export-ObjectProfiles.ps1`로 각 ETL의 CPU 함수/스택, thread CPU, CSwitch/ReadyThread, 대기 스택과 유실 통계를 추출한다.
+`tools/profiling/Export-ObjectProfiles.ps1`로 각 ETL의 CPU 함수/스택, thread CPU, CSwitch/ReadyThread, 대기 스택과 유실 통계를 추출한다.
 기존 OS 심볼 캐시가 있으면 사용한다. 캐시에 없는 OS 심볼은 미해결로 남을 수 있으며 필요시 별도로 확보한다.
 EXE/PDB는 각 기록의 `bin` 폴더를 최우선 사용한다.
 
@@ -52,13 +52,13 @@ atomic 명령 주변의 샘플만으로 캐시 일관성 비용을 단정하지 
 Ready/Waiting 벽시계는 CPU 사용 시간과 분리하며, 프로파일 실행 FPS를 비계측 성능 표와 혼합하지 않는다.
 이벤트 유실·미해결 심볼·기록 경계를 확인하기 전에는 정밀 비율을 결론 내리지 않는다.
 
-`Export-RadiusProfile.ps1`에는 선택적인 심볼 경로 인수만 추가했다. 기존 호출의 기본 동작은 동일하다.
+`tools/profiling/Export-RadiusProfile.ps1`에는 선택적인 심볼 경로 인수만 추가했다. 기존 호출의 기본 동작은 동일하다.
 C++와 기본 스케줄링 정책은 수정하지 않았다.
 
 ## 7만 가벼운 재수집
 
 무거운 기록에서는 7만의 스택 수집 비용이 커 성능 회귀의 원인을 확정하지 못했다.
-`ObjectCpuLight.wprp`는 CPU 샘플 스택과 CSwitch/ReadyThread 이벤트를 유지하되,
+`tools/profiling/ObjectCpuLight.wprp`는 CPU 샘플 스택과 CSwitch/ReadyThread 이벤트를 유지하되,
 CSwitch/ReadyThread마다 수집하던 스택만 제외한다. 기록 비용이 0이 되는 것은 아니다.
 WPR 프로파일 목록 검사와 사전 실행으로 설정을 확인했다.
 

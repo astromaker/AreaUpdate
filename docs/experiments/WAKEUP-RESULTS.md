@@ -131,15 +131,15 @@ sleep을 바꾸면 현재 처리량 한계를 해결할 수 있다는 가설은 
 ## 재현
 
 ```powershell
-.\Run-WakeupComparison.ps1 -OutputDirectory artifacts/new-wakeup-run
+.\tools\experiments\Run-WakeupComparison.ps1 -OutputDirectory artifacts/new-wakeup-run
 # 성능 판단용 추적 비활성 비교
-.\Run-WakeupComparison.ps1 -ActorCounts 70000,140000,280000 -TimerTraceThresholdMs 0 -OutputDirectory artifacts/new-wakeup-off
+.\tools\experiments\Run-WakeupComparison.ps1 -ActorCounts 70000,140000,280000 -TimerTraceThresholdMs 0 -OutputDirectory artifacts/new-wakeup-off
 # 마지막 인수만 변경해 개별 실행
 .\Source\x64\Release\AreaUpdateExample.exe 20 70000 2000 42 5000 1 0 320 job 50 signal
 .\Source\x64\Release\AreaUpdateExample.exe 20 70000 2000 42 5000 1 0 320 job 50 poll
 ```
 
-Run-WakeupComparison.ps1은 실행 파일·해시·Core 소스를 보존하고,
+tools/experiments/Run-WakeupComparison.ps1은 실행 파일·해시·Core 소스를 보존하고,
 실행마다 로그·CPU 표본·요약·Worker 통계와 임계값 이상의 타이머 지연 상세 기록을 저장한다.
 중복 실행·미갱신 Actor·잔여 Task를 검증하며 최대 타이머 지연의 상세 보관 여부도 확인한다.
 

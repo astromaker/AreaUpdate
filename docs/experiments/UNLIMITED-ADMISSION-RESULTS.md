@@ -100,13 +100,13 @@
 성능 비교는 `/p:TaskStatisticsEnabled=0`으로 빌드한 실행 파일을 사용했다. 예제와 측정 스크립트 모두 `unlimited` 선택을 지원한다. 새 비교를 수행하려면 새 출력 폴더를 사용한다.
 
 ```powershell
-.\Run-UnlimitedComparison.ps1 -OutputDirectory artifacts/area-unlimited-repeat
+.\tools\experiments\Run-UnlimitedComparison.ps1 -OutputDirectory artifacts/area-unlimited-repeat
 ```
 
 보관된 계측 OFF 실행 파일로 한 조건만 재현하는 예:
 
 ```powershell
-.\Measure-RuntimeCpu.ps1 -Seconds 60 -Actors 280000 -MovesPerSecond 8000 -MapSide 640 -JoinDurationMs 1000 -AreaAdmissionMode unlimited -ExecutablePath artifacts/area-unlimited-v2/bin/AreaUpdateExample.exe -OutputDirectory artifacts/area-unlimited-single
+.\tools\benchmark\Measure-RuntimeCpu.ps1 -Seconds 60 -Actors 280000 -MovesPerSecond 8000 -MapSide 640 -JoinDurationMs 1000 -AreaAdmissionMode unlimited -ExecutablePath artifacts/area-unlimited-v2/bin/AreaUpdateExample.exe -OutputDirectory artifacts/area-unlimited-single
 ```
 
 Run-UnlimitedComparison은 실행 시점의 Release 실행 파일을 복사하므로, 기본 Task 통계 ON 빌드를 사용하면 이번 OFF 측정과 조건이 달라진다. 최종 작업 트리의 Release·Debug는 기본 설정(Task 통계 ON, Area 카운터 OFF)으로 빌드·테스트를 통과했다. 전체 서식·명명·초기화·중괄호 검사도 통과했다.
@@ -115,7 +115,7 @@ Run-UnlimitedComparison은 실행 시점의 Release 실행 파일을 복사하�
 
 ## 후속 변경: 무제한을 기본값으로 선택
 
-위 비교 이후 사용자 요청에 따라 AreaSchedulingOptions, 예제의 모드 생략 시 선택, Measure-RuntimeCpu.ps1의 기본값을 unlimited로 바꿨다. 기존 adaptive/fixed 모드는 유지한다. 위의 '기본 adaptive 유지' 문장은 실험 당시 상태이며 현재 기본값은 아니다.
+위 비교 이후 사용자 요청에 따라 AreaSchedulingOptions, 예제의 모드 생략 시 선택, tools/benchmark/Measure-RuntimeCpu.ps1의 기본값을 unlimited로 바꿨다. 기존 adaptive/fixed 모드는 유지한다. 위의 '기본 adaptive 유지' 문장은 실험 당시 상태이며 현재 기본값은 아니다.
 
 제한 모드를 의도한 테스트는 unlimited=false를 명시하고, adaptive 연장 테스트는 adaptive=true도 명시한다. 과거 실행 파일을 사용하는 Run-AreaCounterComparison/Run-AreaStepComparison은 기존 조건을 재현하도록 adaptive를 명시한다. 별도 실험 스크립트에서 이미 명시한 모드는 바꾸지 않았다.
 

@@ -105,7 +105,7 @@ queue 18.796/18.771, std 16.034/15.987로 같은 방향의 하락을 재확인�
 - 큐 FIFO, 다중 생산자, Actor 직렬화, 제출·종료 경합 검증 유지.
 - 측정 결과의 체크섬 일치, overlaps/never_updated/tasks_live/tasks_pending=0 확인.
 - 최초 54회 + 순서 순환 36회 + 런타임 재확인 6회, 총 96회 결과 검증 완료.
-- Format-Code.ps1 -All -Check, Check-CodeStyle.ps1 통과.
+- tools/quality/Format-Code.ps1 -All -Check, tools/quality/Check-CodeStyle.ps1 통과.
 
 자료는 artifacts/std-port 아래에 저장했다.
 
@@ -116,6 +116,6 @@ queue 18.796/18.771, std 16.034/15.987로 같은 방향의 하락을 재확인�
 - binaries.json / environment.json: 실행 파일 SHA-256, 측정 환경.
 - before-source / queue-source: 전환 전·중간 단계 소스 보존.
 
-재측정은 Measure-StdPort.ps1, 집계는 Summarize-StdPort.ps1을 사용한다.
+재측정은 tools/experiments/Measure-StdPort.ps1, 집계는 tools/analysis/Summarize-StdPort.ps1을 사용한다.
 현재 소스를 빌드해도 보존된 단계별 실행 파일은 자동 교체되지 않는다.
 해당 실행 파일을 변경하면 다른 측정 세션으로 분리하고 로그와 해시도 다시 보존해야 한다.
